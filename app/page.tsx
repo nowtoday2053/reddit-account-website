@@ -1,7 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, type MotionProps } from "framer-motion";
+
+// Promo end date - 48 hours from first visit (stored in localStorage)
+const getPromoEndDate = () => {
+  if (typeof window === "undefined") return new Date();
+  const stored = localStorage.getItem("promoEndDate");
+  if (stored) {
+    return new Date(stored);
+  }
+  const endDate = new Date(Date.now() + 48 * 60 * 60 * 1000);
+  localStorage.setItem("promoEndDate", endDate.toISOString());
+  return endDate;
+};
 
 const principles = [
   { number: "01", statement: "Purchase An Account" },
@@ -121,6 +133,31 @@ const revealProps: MotionProps = {
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [timeLeft, setTimeLeft] = useState({ hours: 48, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    const endDate = getPromoEndDate();
+    
+    const updateTimer = () => {
+      const now = new Date();
+      const diff = endDate.getTime() - now.getTime();
+      
+      if (diff <= 0) {
+        setTimeLeft({ hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+      
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      
+      setTimeLeft({ hours, minutes, seconds });
+    };
+
+    updateTimer();
+    const interval = setInterval(updateTimer, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="relative overflow-x-hidden">
@@ -413,19 +450,69 @@ export default function Home() {
           {...revealProps}
         >
           <div className="mx-auto max-w-6xl space-y-8">
-            <div className="text-center text-[0.7rem] uppercase tracking-[0.5em] text-[#5e5a55]">
+            <div className="text-center text-2xl font-semibold tracking-tight text-[#1f1b17] underline sm:text-3xl">
               Pricing
             </div>
+            
+            {/* Promo Banner */}
+            <motion.div
+              className="mx-auto max-w-xl rounded-2xl border border-[#2e2b28]/15 bg-white p-6 text-center shadow-sm"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              <div className="inline-block rounded-full bg-[#2e2b28] px-3 py-1 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-[#f7f4ef]">
+                Limited Offer
+              </div>
+              <div className="mt-3 font-[var(--font-karma-display)] text-xl text-[#1f1b17] sm:text-2xl">
+                Buy One, Get One Free
+              </div>
+              <p className="mt-1 text-sm text-[#5a544c]">
+                Get a second account free with any purchase
+              </p>
+              <div className="mt-4 flex items-center justify-center gap-3 text-[#2e2b28]">
+                <div className="flex flex-col items-center rounded-lg bg-[#f7f4ef] px-3 py-2">
+                  <span className="text-xl font-semibold sm:text-2xl">
+                    {String(timeLeft.hours).padStart(2, "0")}
+                  </span>
+                  <span className="text-[0.6rem] uppercase tracking-wider text-[#5a544c]">hrs</span>
+                </div>
+                <span className="text-lg text-[#b5aea6]">:</span>
+                <div className="flex flex-col items-center rounded-lg bg-[#f7f4ef] px-3 py-2">
+                  <span className="text-xl font-semibold sm:text-2xl">
+                    {String(timeLeft.minutes).padStart(2, "0")}
+                  </span>
+                  <span className="text-[0.6rem] uppercase tracking-wider text-[#5a544c]">min</span>
+                </div>
+                <span className="text-lg text-[#b5aea6]">:</span>
+                <div className="flex flex-col items-center rounded-lg bg-[#f7f4ef] px-3 py-2">
+                  <span className="text-xl font-semibold sm:text-2xl">
+                    {String(timeLeft.seconds).padStart(2, "0")}
+                  </span>
+                  <span className="text-[0.6rem] uppercase tracking-wider text-[#5a544c]">sec</span>
+                </div>
+              </div>
+            </motion.div>
+
             <div className="grid gap-5 lg:grid-cols-3">
               {pricingTiers.map((tier) => (
                 <div
                   key={tier.name}
-                  className={`flex h-full w-full flex-col rounded-[24px] border px-8 py-10 transition-all ${
+                  className={`relative flex h-full w-full flex-col rounded-[24px] border px-8 py-10 transition-all ${
                     tier.featured
                       ? "border-[#1e1b18] bg-[#121110] text-[#f7f4ef] shadow-[0_24px_80px_-40px_rgba(0,0,0,0.55)]"
                       : "border-[#2e2b28]/15 bg-white text-[#1f1b17] shadow-[0_20px_60px_-40px_rgba(16,16,15,0.3)]"
                   }`}
                 >
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                    <span className={`rounded-full px-3 py-1 text-[0.6rem] font-medium uppercase tracking-wider ${
+                      tier.featured 
+                        ? "bg-[#f7f4ef] text-[#121110]" 
+                        : "bg-[#2e2b28] text-[#f7f4ef]"
+                    }`}>
+                      Buy 1 Get 1 Free
+                    </span>
+                  </div>
                   <span
                     className={`text-sm font-semibold uppercase tracking-[0.28em] ${
                       tier.featured ? "text-[#d8d0c3]" : "text-[#514b44]"
