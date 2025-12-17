@@ -122,39 +122,39 @@ export default function Home() {
   return (
     <div className="relative overflow-x-hidden">
       <nav className="sticky top-0 z-50 border-b border-black/10 bg-[#f7f4ef]/80 backdrop-blur-md">
-        <div className="flex w-full flex-col gap-3 px-6 py-4 sm:grid sm:grid-cols-[auto_1fr_auto] sm:items-center sm:gap-4 sm:px-8">
+        <div className="flex w-full items-center justify-between gap-4 px-4 py-3 sm:px-8 sm:py-4">
           <a
             href="#hero"
             className="flex flex-shrink-0 flex-col gap-1 text-left transition-opacity hover:opacity-80"
           >
-            <span className="text-[0.68rem] font-medium tracking-[0.35em] uppercase text-[#38342f] sm:text-[0.72rem] sm:tracking-[0.42em]">
+            <span className="text-[0.55rem] font-medium tracking-[0.25em] uppercase text-[#38342f] sm:text-[0.72rem] sm:tracking-[0.42em]">
               redditaccountsforsale.com
             </span>
           </a>
           <div
             role="navigation"
             aria-label="Primary"
-            className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-[0.6rem] uppercase tracking-[0.3em] text-[#2e2b28] sm:flex-nowrap sm:text-[0.68rem] sm:tracking-[0.45em]"
+            className="hidden flex-nowrap justify-center gap-x-4 text-[0.68rem] uppercase tracking-[0.45em] text-[#2e2b28] md:flex"
           >
             <a className="transition-opacity hover:opacity-70" href="#principles">
               How It Works
             </a>
-            <span className="hidden px-1 text-[#b5aea6] sm:inline">|</span>
+            <span className="px-1 text-[#b5aea6]">|</span>
             <a className="transition-opacity hover:opacity-70" href="#pricing">
               Pricing
             </a>
-            <span className="hidden px-1 text-[#b5aea6] sm:inline">|</span>
+            <span className="px-1 text-[#b5aea6]">|</span>
             <a className="transition-opacity hover:opacity-70" href="#faq">
               FAQ
             </a>
-            <span className="hidden px-1 text-[#b5aea6] sm:inline">|</span>
+            <span className="px-1 text-[#b5aea6]">|</span>
             <a className="transition-opacity hover:opacity-70" href="#affiliates">
               Affiliates
             </a>
           </div>
           <a
             href="#pricing"
-            className="inline-flex flex-shrink-0 items-center rounded-full border border-[#2e2b28]/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-[#2e2b28] transition-all hover:-translate-y-0.5 hover:border-[#2e2b28] hover:bg-[#2e2b28] hover:text-[#f7f4ef] self-start sm:self-auto sm:justify-self-end"
+            className="inline-flex flex-shrink-0 items-center rounded-full border border-[#2e2b28]/30 px-3 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-[#2e2b28] transition-all hover:-translate-y-0.5 hover:border-[#2e2b28] hover:bg-[#2e2b28] hover:text-[#f7f4ef] sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.28em]"
           >
             Buy Now
           </a>
@@ -167,11 +167,11 @@ export default function Home() {
           className="space-y-8"
           {...revealProps}
         >
-          <h1 className="mr-auto font-[var(--font-karma-display)] text-4xl leading-tight text-[#131211] sm:text-5xl sm:leading-[1.05] md:text-6xl">
-            <span className="block text-[0.85em] sm:ml-[-0.5em] sm:whitespace-nowrap sm:text-[0.95em]">
+          <h1 className="mr-auto font-[var(--font-karma-display)] text-[2rem] leading-[1.15] text-[#131211] sm:text-5xl sm:leading-[1.05] md:text-6xl">
+            <span className="block sm:ml-[-0.5em] sm:whitespace-nowrap">
               Stop Getting Banned On Reddit.
             </span>
-            <span className="mt-2 block sm:pl-[2em]">Start Going Viral.</span>
+            <span className="mt-1 block sm:mt-2 sm:pl-[2em]">Start Going Viral.</span>
           </h1>
           <p className="max-w-2xl text-base text-[#3c3832] sm:text-lg">
             Tired of getting banned? Use aged, karma-ready Reddit accounts built
