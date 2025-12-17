@@ -31,6 +31,7 @@ const pricingTiers = [
       "Best for normal use & testing Reddit",
     ],
     featured: false,
+    link: "https://buy.stripe.com/7sY9AS92bfkGch1gkR6Ri00",
   },
   {
     name: "Growth",
@@ -45,6 +46,7 @@ const pricingTiers = [
       "Best for scaling campaigns & community launches",
     ],
     featured: false,
+    link: "https://buy.stripe.com/3cIeVc5PZ3BYgxh0lT6Ri01",
   },
   {
     name: "Pro",
@@ -58,6 +60,7 @@ const pricingTiers = [
       "Best for high-visibility launches & influencer ops",
     ],
     featured: true,
+    link: "https://buy.stripe.com/eVqcN4fqz0pM5SDc4B6Ri02",
   },
 ];
 
@@ -464,7 +467,7 @@ export default function Home() {
                     ))}
                   </ul>
                   <a
-                    href="#affiliates"
+                    href={tier.link}
                     className={`mt-8 inline-flex w-full items-center justify-center rounded-full border px-6 py-3 text-sm font-semibold uppercase tracking-[0.16em] transition-all hover:-translate-y-0.5 ${
                       tier.featured
                         ? "border-[#f7f4ef]/30 bg-[#f7f4ef] text-[#121110] hover:bg-transparent hover:text-[#f7f4ef]"
