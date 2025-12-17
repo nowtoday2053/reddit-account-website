@@ -302,6 +302,23 @@ export default function Home() {
           <p className="text-center text-sm text-[#5a544c]">
             Trusted by hundreds of people posting on Reddit.
           </p>
+          <div
+            className="trustpilot-widget mx-auto max-w-md"
+            data-locale="en-US"
+            data-template-id="56278e9abfbbba0bdcd568bc"
+            data-businessunit-id="6942617dae5298305b4fe796"
+            data-style-height="52px"
+            data-style-width="100%"
+            data-token="ef0de007-eab2-4839-8ba0-f3e54401f0a1"
+          >
+            <a
+              href="https://www.trustpilot.com/review/redditaccountsforsale.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Trustpilot
+            </a>
+          </div>
           <div className="grid gap-4 pt-4 sm:grid-cols-1 lg:grid-cols-2">
             <a
               href="https://x.com/jaydmss/status/2001102971786989719"
