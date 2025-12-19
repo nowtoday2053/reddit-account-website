@@ -32,8 +32,8 @@ const benefits = [
 const pricingTiers = [
   {
     name: "Starter",
-    price: "$39",
-    original: "$59",
+    price: "$19",
+    original: "$29",
     subtitle: "Includes Free Warm Up Guide",
     bullets: [
       "Aged account",
@@ -47,8 +47,8 @@ const pricingTiers = [
   },
   {
     name: "Growth",
-    price: "$79",
-    original: "$99",
+    price: "$39",
+    original: "$59",
     subtitle: "Includes Warm Up Guide & Playbook",
     bullets: [
       "Aged account",
@@ -62,8 +62,8 @@ const pricingTiers = [
   },
   {
     name: "Pro",
-    price: "$149",
-    original: "$199",
+    price: "$49",
+    original: "$79",
     subtitle: "Everything In Growth + Growth Hacking pdf",
     bullets: [
       "Aged account",
