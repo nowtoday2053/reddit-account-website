@@ -43,7 +43,7 @@ const pricingTiers = [
       "Best for normal use & testing Reddit",
     ],
     featured: false,
-    link: "https://buy.stripe.com/7sY9AS92bfkGch1gkR6Ri00",
+    link: "https://buy.stripe.com/eVqdR8bajdcy4Ozd8F6Ri03",
   },
   {
     name: "Growth",
@@ -58,7 +58,7 @@ const pricingTiers = [
       "Best for scaling campaigns & community launches",
     ],
     featured: false,
-    link: "https://buy.stripe.com/3cIeVc5PZ3BYgxh0lT6Ri01",
+    link: "https://buy.stripe.com/5kQ3cu4LVegC80L9Wt6Ri04",
   },
   {
     name: "Pro",
@@ -72,7 +72,7 @@ const pricingTiers = [
       "Best for high-visibility launches & influencer ops",
     ],
     featured: true,
-    link: "https://buy.stripe.com/eVqcN4fqz0pM5SDc4B6Ri02",
+    link: "https://buy.stripe.com/14AdR84LV5K62Gr2u16Ri05",
   },
 ];
 
