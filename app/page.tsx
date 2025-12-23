@@ -3,15 +3,15 @@
 import { useState, useEffect } from "react";
 import { motion, type MotionProps } from "framer-motion";
 
-// Promo end date - 48 hours from first visit (stored in localStorage)
+// Promo end date - 72 hours from first visit (stored in localStorage)
 const getPromoEndDate = () => {
   if (typeof window === "undefined") return new Date();
-  const stored = localStorage.getItem("promoEndDate");
+  const stored = localStorage.getItem("promoEndDate72");
   if (stored) {
     return new Date(stored);
   }
-  const endDate = new Date(Date.now() + 48 * 60 * 60 * 1000);
-  localStorage.setItem("promoEndDate", endDate.toISOString());
+  const endDate = new Date(Date.now() + 72 * 60 * 60 * 1000);
+  localStorage.setItem("promoEndDate72", endDate.toISOString());
   return endDate;
 };
 
@@ -133,7 +133,7 @@ const revealProps: MotionProps = {
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [timeLeft, setTimeLeft] = useState({ hours: 48, minutes: 0, seconds: 0 });
+  const [timeLeft, setTimeLeft] = useState({ hours: 72, minutes: 0, seconds: 0 });
 
   useEffect(() => {
     const endDate = getPromoEndDate();
