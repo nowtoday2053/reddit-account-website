@@ -444,12 +444,14 @@ export default function Home() {
           </div>
         </motion.section>
 
+        </main>
+
         <motion.section
           id="pricing"
-          className="relative left-1/2 right-1/2 -mx-[50vw] mt-24 w-screen space-y-10 px-4 sm:px-8"
+          className="mt-24 space-y-10 px-4 sm:px-6 lg:px-8"
           {...revealProps}
         >
-          <div className="mx-auto max-w-6xl space-y-8">
+          <div className="mx-auto max-w-5xl space-y-8">
             <div className="text-center text-2xl font-semibold tracking-tight text-[#1f1b17] underline sm:text-3xl">
               Pricing
             </div>
@@ -494,11 +496,11 @@ export default function Home() {
               </div>
             </motion.div>
 
-            <div className="grid gap-5 lg:grid-cols-3">
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {pricingTiers.map((tier) => (
                 <div
                   key={tier.name}
-                  className={`relative flex h-full w-full flex-col rounded-[24px] border px-8 py-10 transition-all ${
+                  className={`relative flex h-full w-full flex-col rounded-[24px] border px-5 py-8 sm:px-8 sm:py-10 transition-all ${
                     tier.featured
                       ? "border-[#1e1b18] bg-[#121110] text-[#f7f4ef] shadow-[0_24px_80px_-40px_rgba(0,0,0,0.55)]"
                       : "border-[#2e2b28]/15 bg-white text-[#1f1b17] shadow-[0_20px_60px_-40px_rgba(16,16,15,0.3)]"
@@ -586,6 +588,7 @@ export default function Home() {
           </div>
         </motion.section>
 
+        <main className="mx-auto max-w-3xl px-6 pb-20 sm:px-8 sm:pb-28">
         <motion.section id="faq" className="mt-24 space-y-8" {...revealProps}>
           <div className="text-center text-2xl font-semibold tracking-tight text-[#1f1b17] underline sm:text-3xl">
             FAQ
