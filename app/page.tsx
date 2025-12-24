@@ -201,35 +201,51 @@ export default function Home() {
         </div>
       </nav>
 
-      <main className="mx-auto max-w-3xl px-6 pb-20 pt-16 sm:px-8 sm:pb-28 lg:pt-20">
+      <main className="mx-auto max-w-6xl px-6 pb-20 pt-16 sm:px-8 sm:pb-28 lg:pt-20">
         <motion.section
           id="hero"
-          className="space-y-8"
+          className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-center lg:gap-16"
           {...revealProps}
         >
-          <h1 className="mr-auto font-[var(--font-karma-display)] text-[2rem] leading-[1.15] text-[#131211] sm:text-5xl sm:leading-[1.05] md:text-6xl">
-            <span className="block sm:ml-[-0.5em] sm:whitespace-nowrap">
-              Stop Getting Banned On Reddit.
-            </span>
-            <span className="mt-1 block sm:mt-2 sm:pl-[2em]">Start Going Viral.</span>
-          </h1>
-          <p className="max-w-2xl text-base text-[#3c3832] sm:text-lg">
-            Tired of getting banned? Use aged, karma-ready Reddit accounts built
-            to post, comment, and scale without bans.
-          </p>
-          <div className="flex flex-wrap justify-center gap-5">
-            <a
-              href="#pricing"
-              className="inline-flex items-center rounded-full border border-[#2e2b28] bg-[#2e2b28] px-6 py-3 text-xs font-semibold uppercase tracking-[0.28em] text-[#f7f4ef] transition-all hover:-translate-y-0.5 hover:bg-[#1d1a18]"
-            >
-              Buy Now
-            </a>
-            <a
-              href="#principles"
-              className="inline-flex items-center gap-2 border-b border-[#2e2b28]/40 pb-1 text-xs font-medium uppercase tracking-[0.3em] text-[#2e2b28] transition-all hover:border-[#2e2b28] hover:tracking-[0.34em]"
-            >
-              See Reviews
-            </a>
+          <div className="space-y-8 lg:-ml-4">
+            <h1 className="font-[var(--font-karma-display)] text-[1.75rem] leading-[1.15] text-[#131211] sm:text-4xl sm:leading-[1.1] md:text-[2.75rem]">
+              <span className="block whitespace-nowrap">
+                Stop Getting Banned On Reddit.
+              </span>
+              <span className="mt-1 block sm:mt-2">Start Going Viral.</span>
+            </h1>
+            <p className="max-w-xl text-base text-[#3c3832] sm:text-lg">
+              Tired of getting banned? Use aged, karma-ready Reddit accounts built
+              to post, comment, and go viral without bans.
+            </p>
+            <div className="flex flex-wrap gap-5">
+              <a
+                href="#pricing"
+                className="inline-flex items-center rounded-full border border-[#2e2b28] bg-[#2e2b28] px-6 py-3 text-xs font-semibold uppercase tracking-[0.28em] text-[#f7f4ef] transition-all hover:-translate-y-0.5 hover:bg-[#1d1a18]"
+              >
+                Buy Now
+              </a>
+              <a
+                href="#principles"
+                className="inline-flex items-center gap-2 border-b border-[#2e2b28]/40 pb-1 text-xs font-medium uppercase tracking-[0.3em] text-[#2e2b28] transition-all hover:border-[#2e2b28] hover:tracking-[0.34em]"
+              >
+                See Reviews
+              </a>
+            </div>
+          </div>
+          <div className="relative hidden lg:block">
+            <div className="space-y-4">
+              <img 
+                src="/vr.png" 
+                alt="Reddit post insights showing 1.5M views" 
+                className="w-full rounded-2xl shadow-[0_20px_60px_-20px_rgba(0,0,0,0.3)]"
+              />
+              <img 
+                src="/r2.png" 
+                alt="Reddit reach analytics with 879K views" 
+                className="w-full rounded-xl shadow-[0_15px_40px_-15px_rgba(0,0,0,0.25)]"
+              />
+            </div>
           </div>
         </motion.section>
 
