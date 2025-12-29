@@ -6,12 +6,12 @@ import { motion, type MotionProps } from "framer-motion";
 // Promo end date - 72 hours from first visit (stored in localStorage)
 const getPromoEndDate = () => {
   if (typeof window === "undefined") return new Date();
-  const stored = localStorage.getItem("promoEndDate72");
+  const stored = localStorage.getItem("promoEndDate72Reset");
   if (stored) {
     return new Date(stored);
   }
   const endDate = new Date(Date.now() + 72 * 60 * 60 * 1000);
-  localStorage.setItem("promoEndDate72", endDate.toISOString());
+  localStorage.setItem("promoEndDate72Reset", endDate.toISOString());
   return endDate;
 };
 
@@ -25,7 +25,7 @@ const benefits = [
   "Warm-up + posting cadence playbook",
   "Subreddit fit + engagement strategy",
   "Risk checklist (what triggers restrictions)",
-  "Recovery steps if you’re locked out",
+  "Recovery steps if you're locked out",
   "Operating guidelines for teams",
 ];
 
@@ -201,51 +201,35 @@ export default function Home() {
         </div>
       </nav>
 
-      <main className="mx-auto max-w-6xl px-6 pb-20 pt-16 sm:px-8 sm:pb-28 lg:pt-20">
+      <main className="mx-auto max-w-3xl px-6 pb-20 pt-16 sm:px-8 sm:pb-28 lg:pt-20">
         <motion.section
           id="hero"
-          className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-center lg:gap-16"
+          className="space-y-8"
           {...revealProps}
         >
-          <div className="space-y-8 lg:-ml-4">
-            <h1 className="font-[var(--font-karma-display)] text-[1.75rem] leading-[1.15] text-[#131211] sm:text-4xl sm:leading-[1.1] md:text-[2.75rem]">
-              <span className="block whitespace-nowrap">
-                Stop Getting Banned On Reddit.
-              </span>
-              <span className="mt-1 block sm:mt-2">Start Going Viral.</span>
-            </h1>
-            <p className="max-w-xl text-base text-[#3c3832] sm:text-lg">
-              Tired of getting banned? Use aged, karma-ready Reddit accounts built
-              to post, comment, and go viral without bans.
-            </p>
-            <div className="flex flex-wrap gap-5">
-              <a
-                href="#pricing"
-                className="inline-flex items-center rounded-full border border-[#2e2b28] bg-[#2e2b28] px-6 py-3 text-xs font-semibold uppercase tracking-[0.28em] text-[#f7f4ef] transition-all hover:-translate-y-0.5 hover:bg-[#1d1a18]"
-              >
-                Buy Now
-              </a>
-              <a
-                href="#principles"
-                className="inline-flex items-center gap-2 border-b border-[#2e2b28]/40 pb-1 text-xs font-medium uppercase tracking-[0.3em] text-[#2e2b28] transition-all hover:border-[#2e2b28] hover:tracking-[0.34em]"
-              >
-                See Reviews
-              </a>
-            </div>
-          </div>
-          <div className="relative hidden lg:block">
-            <div className="space-y-4">
-              <img 
-                src="/vr.png" 
-                alt="Reddit post insights showing 1.5M views" 
-                className="w-full rounded-2xl shadow-[0_20px_60px_-20px_rgba(0,0,0,0.3)]"
-              />
-              <img 
-                src="/r2.png" 
-                alt="Reddit reach analytics with 879K views" 
-                className="w-full rounded-xl shadow-[0_15px_40px_-15px_rgba(0,0,0,0.25)]"
-              />
-            </div>
+          <h1 className="mr-auto font-[var(--font-karma-display)] text-[2rem] leading-[1.15] text-[#131211] sm:text-5xl sm:leading-[1.05] md:text-6xl">
+            <span className="block sm:ml-[-0.5em] sm:whitespace-nowrap">
+              Stop Getting Banned On Reddit.
+            </span>
+            <span className="mt-1 block sm:mt-2 sm:pl-[2em]">Start Going Viral.</span>
+          </h1>
+          <p className="max-w-2xl text-base text-[#3c3832] sm:text-lg">
+            Tired of getting banned? Use aged, karma-ready Reddit accounts built
+            to post, comment, and go viral without bans.
+          </p>
+          <div className="flex flex-wrap justify-center gap-5">
+            <a
+              href="#pricing"
+              className="inline-flex items-center rounded-full border border-[#2e2b28] bg-[#2e2b28] px-6 py-3 text-xs font-semibold uppercase tracking-[0.28em] text-[#f7f4ef] transition-all hover:-translate-y-0.5 hover:bg-[#1d1a18]"
+            >
+              Buy Now
+            </a>
+            <a
+              href="#principles"
+              className="inline-flex items-center gap-2 border-b border-[#2e2b28]/40 pb-1 text-xs font-medium uppercase tracking-[0.3em] text-[#2e2b28] transition-all hover:border-[#2e2b28] hover:tracking-[0.34em]"
+            >
+              See Reviews
+            </a>
           </div>
         </motion.section>
 
@@ -460,14 +444,12 @@ export default function Home() {
           </div>
         </motion.section>
 
-        </main>
-
         <motion.section
           id="pricing"
-          className="mt-24 space-y-10 px-4 sm:px-6 lg:px-8"
+          className="relative left-1/2 right-1/2 -mx-[50vw] mt-24 w-screen space-y-10 px-4 sm:px-8"
           {...revealProps}
         >
-          <div className="mx-auto max-w-5xl space-y-8">
+          <div className="mx-auto max-w-6xl space-y-8">
             <div className="text-center text-2xl font-semibold tracking-tight text-[#1f1b17] underline sm:text-3xl">
               Pricing
             </div>
@@ -512,11 +494,11 @@ export default function Home() {
               </div>
             </motion.div>
 
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-5 lg:grid-cols-3">
               {pricingTiers.map((tier) => (
                 <div
                   key={tier.name}
-                  className={`relative flex h-full w-full flex-col rounded-[24px] border px-5 py-8 sm:px-8 sm:py-10 transition-all ${
+                  className={`relative flex h-full w-full flex-col rounded-[24px] border px-8 py-10 transition-all ${
                     tier.featured
                       ? "border-[#1e1b18] bg-[#121110] text-[#f7f4ef] shadow-[0_24px_80px_-40px_rgba(0,0,0,0.55)]"
                       : "border-[#2e2b28]/15 bg-white text-[#1f1b17] shadow-[0_20px_60px_-40px_rgba(16,16,15,0.3)]"
@@ -603,8 +585,9 @@ export default function Home() {
             </div>
           </div>
         </motion.section>
+      </main>
 
-        <main className="mx-auto max-w-3xl px-6 pb-20 sm:px-8 sm:pb-28">
+      <main className="mx-auto max-w-3xl px-6 pb-20 sm:px-8 sm:pb-28">
         <motion.section id="faq" className="mt-24 space-y-8" {...revealProps}>
           <div className="text-center text-2xl font-semibold tracking-tight text-[#1f1b17] underline sm:text-3xl">
             FAQ

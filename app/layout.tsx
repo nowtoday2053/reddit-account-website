@@ -1,24 +1,18 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
-const manifestoSerif = Playfair_Display({
-  variable: "--font-karma-display",
+const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-});
-
-const manifestoSans = Inter({
-  variable: "--font-karma-body",
-  subsets: ["latin"],
-  display: "swap",
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
-  title: "KarmaLab — Reddit Account Recovery & Compliance",
+  title: "Reddit Accounts For Sale — Aged, Karma-Ready Accounts",
   description:
-    "An edgy, compliance-first manifesto outlining KarmaLab’s approach to Reddit account recovery, risk mitigation, and reputation building.",
+    "Get aged, karma-ready Reddit accounts built to post, comment, and go viral without bans. Fast delivery, verified accounts, and comprehensive guides included.",
 };
 
 export default function RootLayout({
@@ -47,7 +41,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${manifestoSerif.variable} ${manifestoSans.variable} antialiased`}
+        className={`${inter.variable} font-sans antialiased`}
       >
         {children}
       </body>
