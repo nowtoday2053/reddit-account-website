@@ -17,7 +17,7 @@ const getPromoEndDate = () => {
 
 const principles = [
   { number: "01", statement: "Purchase An Account" },
-  { number: "02", statement: "Receive Your Account Within 10 Minutes" },
+  { number: "02", statement: "Receive Your Account Within 1 Hour" },
   { number: "03", statement: "Post & Go Viral" },
 ];
 
@@ -95,7 +95,7 @@ const faqs = [
   {
     question: "How do I receive my account?",
     answer:
-      "After purchase, you'll receive the login credentials (username, password, and email access) within 10 minutes via email.",
+      "After purchase, you'll receive the login credentials (username, password, and email access) within 1 hour via email.",
   },
   {
     question: "What if the account gets banned right after I buy it?",
@@ -109,7 +109,7 @@ const ourBenefits = [
   "Karma-ready; post immediately",
   "Email verified & secure handoff",
   "Free warm-up guide included",
-  "Fast delivery (under 10 minutes)",
+  "Fast delivery (within 1 hour)",
   "1-on-1 support if you get stuck",
 ];
 
