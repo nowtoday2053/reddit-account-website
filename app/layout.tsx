@@ -39,6 +39,14 @@ export default function RootLayout({
           src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
           strategy="afterInteractive"
         />
+        <Script
+          id="datafa-analytics"
+          src="https://datafa.st/js/script.js"
+          strategy="afterInteractive"
+          defer
+          data-website-id="dfid_w8FHUY2BpGUfg9xMnuwAc"
+          data-domain="redditaccountsforsale.com"
+        />
       </head>
       <body
         className={`${inter.variable} font-sans antialiased`}

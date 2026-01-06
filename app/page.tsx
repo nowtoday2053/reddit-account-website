@@ -1,19 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, type MotionProps } from "framer-motion";
-
-// Promo end date - 72 hours from first visit (stored in localStorage)
-const getPromoEndDate = () => {
-  if (typeof window === "undefined") return new Date();
-  const stored = localStorage.getItem("promoEndDate72Reset");
-  if (stored) {
-    return new Date(stored);
-  }
-  const endDate = new Date(Date.now() + 72 * 60 * 60 * 1000);
-  localStorage.setItem("promoEndDate72Reset", endDate.toISOString());
-  return endDate;
-};
 
 const principles = [
   { number: "01", statement: "Purchase An Account" },
@@ -97,11 +85,6 @@ const faqs = [
     answer:
       "After purchase, you'll receive the login credentials (username, password, and email access) within 10 minutes via email.",
   },
-  {
-    question: "What if the account gets banned right after I buy it?",
-    answer:
-      "If your account gets banned within 48 hours of purchase (and you followed our warm-up guide), we'll replace it for free. No questions asked.",
-  },
 ];
 
 const ourBenefits = [
@@ -133,31 +116,6 @@ const revealProps: MotionProps = {
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [timeLeft, setTimeLeft] = useState({ hours: 72, minutes: 0, seconds: 0 });
-
-  useEffect(() => {
-    const endDate = getPromoEndDate();
-    
-    const updateTimer = () => {
-      const now = new Date();
-      const diff = endDate.getTime() - now.getTime();
-      
-      if (diff <= 0) {
-        setTimeLeft({ hours: 0, minutes: 0, seconds: 0 });
-        return;
-      }
-      
-      const hours = Math.floor(diff / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-      
-      setTimeLeft({ hours, minutes, seconds });
-    };
-
-    updateTimer();
-    const interval = setInterval(updateTimer, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div className="relative overflow-x-hidden">
@@ -294,7 +252,7 @@ export default function Home() {
                   ))}
                 </ul>
               </div>
-            </div>
+          </div>
           </div>
         </motion.section>
 
@@ -470,28 +428,6 @@ export default function Home() {
               <p className="mt-1 text-sm text-[#5a544c]">
                 Get a second account free with any purchase
               </p>
-              <div className="mt-4 flex items-center justify-center gap-3 text-[#2e2b28]">
-                <div className="flex flex-col items-center rounded-lg bg-[#f7f4ef] px-3 py-2">
-                  <span className="text-xl font-semibold sm:text-2xl">
-                    {String(timeLeft.hours).padStart(2, "0")}
-                  </span>
-                  <span className="text-[0.6rem] uppercase tracking-wider text-[#5a544c]">hrs</span>
-                </div>
-                <span className="text-lg text-[#b5aea6]">:</span>
-                <div className="flex flex-col items-center rounded-lg bg-[#f7f4ef] px-3 py-2">
-                  <span className="text-xl font-semibold sm:text-2xl">
-                    {String(timeLeft.minutes).padStart(2, "0")}
-                  </span>
-                  <span className="text-[0.6rem] uppercase tracking-wider text-[#5a544c]">min</span>
-                </div>
-                <span className="text-lg text-[#b5aea6]">:</span>
-                <div className="flex flex-col items-center rounded-lg bg-[#f7f4ef] px-3 py-2">
-                  <span className="text-xl font-semibold sm:text-2xl">
-                    {String(timeLeft.seconds).padStart(2, "0")}
-                  </span>
-                  <span className="text-[0.6rem] uppercase tracking-wider text-[#5a544c]">sec</span>
-                </div>
-              </div>
             </motion.div>
 
             <div className="grid gap-5 lg:grid-cols-3">
@@ -522,14 +458,14 @@ export default function Home() {
                   </span>
                   <div className="mt-5">
                     <div className="flex items-baseline gap-2">
-                      <span
+                    <span
                         className={`font-[var(--font-karma-display)] text-[2.75rem] leading-none ${
-                          tier.featured ? "text-[#f7f4ef]" : "text-[#161310]"
-                        }`}
-                      >
-                        {tier.price}
-                      </span>
-                      <span
+                        tier.featured ? "text-[#f7f4ef]" : "text-[#161310]"
+                      }`}
+                    >
+                      {tier.price}
+                    </span>
+                    <span
                         className={`text-sm line-through ${
                           tier.featured ? "text-[#a99f93]" : "text-[#9c958c]"
                         }`}
@@ -600,9 +536,9 @@ export default function Home() {
                 onClick={() => setOpenFaq(openFaq === index ? null : index)}
               >
                 <div className="flex items-center justify-between">
-                  <h3 className="font-[var(--font-karma-display)] text-lg tracking-tight text-[#1f1c19] sm:text-xl">
-                    {faq.question}
-                  </h3>
+                <h3 className="font-[var(--font-karma-display)] text-lg tracking-tight text-[#1f1c19] sm:text-xl">
+                  {faq.question}
+                </h3>
                   <span className="ml-4 text-xl text-[#5e5a55] transition-transform duration-300" style={{ transform: openFaq === index ? 'rotate(45deg)' : 'rotate(0deg)' }}>
                     +
                   </span>
@@ -614,7 +550,7 @@ export default function Home() {
                     exit={{ opacity: 0, height: 0 }}
                     className="mt-4 text-base leading-relaxed text-[#2f2b27] sm:text-lg"
                   >
-                    {faq.answer}
+                  {faq.answer}
                   </motion.p>
                 )}
               </div>
@@ -659,8 +595,8 @@ export default function Home() {
               className="inline-flex items-center rounded-full border border-[#f7f4ef]/40 bg-[#f7f4ef]/10 px-6 py-3 text-xs font-semibold tracking-[0.1em] text-[#f7f4ef] transition-all hover:bg-[#f7f4ef] hover:text-[#121110]"
             >
               Email Us At: support@redditaccountsforsale.com
-            </a>
-          </div>
+          </a>
+        </div>
         </motion.section>
 
         <motion.section
